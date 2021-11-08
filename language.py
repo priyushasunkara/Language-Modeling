@@ -200,8 +200,13 @@ Parameters: int ; list of strs ; list of floats
 Returns: str
 '''
 from random import choices
+import random
 def generateTextFromUnigrams(count, words, probs):
-    return
+    sentence=""
+    for i in range(0,count):
+        randomList=random.choices(words,weights=probs)
+        sentence=sentence+randomList[0]+" "
+    return sentence
 
 
 '''
@@ -360,7 +365,7 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testGetTopWords()
+    test.testGenerateTextFromUnigrams()
 
     ## Uncomment these for Week 2 ##
 """
