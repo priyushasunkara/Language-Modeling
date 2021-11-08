@@ -160,7 +160,18 @@ Parameters: dict mapping strs to ints ; dict mapping strs to (dicts mapping strs
 Returns: dict mapping strs to (dicts mapping strs to (lists of values))
 '''
 def buildBigramProbs(unigramCounts, bigramCounts):
-    return
+    dict1={}
+    for prevWord in bigramCounts:
+        word=[]
+        prob=[]
+        for key,value in bigramCounts[prevWord].items():
+            word.append(key)
+            prob.append(value/unigramCounts[prevWord])
+            dict2={}
+            dict2["words"]=word
+            dict2["probs"]=prob
+        dict1[prevWord]=dict2
+    return dict1
 
 
 '''
@@ -340,7 +351,7 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testBuildUnigramProbs()
+    test.testBuildBigramProbs()
 
     ## Uncomment these for Week 2 ##
 """
